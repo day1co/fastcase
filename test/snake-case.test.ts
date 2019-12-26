@@ -1,48 +1,38 @@
-const { describe, it, xit } = require('mocha');
-const { expect } = require('chai');
-
-const {
-  toCamelCase,
-  toSnakeCase,
-  toCamelCaseFast,
-  toSnakeCaseFast,
-  toCaseKeysFn,
-  toCamelCaseKeys,
-  toSnakeCaseKeys,
-} = require('../lib/fastcase');
+import SnakeCase from '../src/snakecase';
 
 describe('fastcase', () => {
+  const snakeCase = SnakeCase.create();
   describe('toCamelCase', () => {
-    it('edge', () => {
-      expect(toCamelCase()).to.be.undefined;
-      expect(toCamelCase(null)).to.be.null;
-      expect(toCamelCase('')).to.equal('');
+    test('edge', () => {
+      expect(snakeCase.toCamelCase()).to.be.undefined;
+      expect(snakeCase.toCamelCase(null)).to.be.null;
+      expect(snakeCase.toCamelCase('')).to.equal('');
     });
-    it('non string', () => {
+    test('non string', () => {
       expect(toCamelCase(123)).to.equal(123);
       expect(toCamelCase(123.456)).to.equal(123.456);
       expect(toCamelCase([])).to.deep.equal([]);
       expect(toCamelCase({})).to.deep.equal({});
     });
-    it('snake case', () => {
+    test('snake case', () => {
       expect(toCamelCase('foo_bar_baz')).to.equal('fooBarBaz');
     });
-    it('camel case', () => {
+    test('camel case', () => {
       expect(toCamelCase('fooBarBaz')).to.equal('fooBarBaz');
     });
-    it('pascal case', () => {
+    test('pascal case', () => {
       expect(toCamelCase('FooBarBaz')).to.equal('FooBarBaz');
     });
-    it('kebab case', () => {
+    test('kebab case', () => {
       expect(toCamelCase('foo-bar-baz')).to.equal('foo-bar-baz');
     });
-    it('cobol case', () => {
+    test('cobol case', () => {
       expect(toCamelCase('FOO-BAR-BAZ')).to.equal('FOO-BAR-BAZ');
     });
-    it('upper case', () => {
+    test('upper case', () => {
       expect(toCamelCase('FOO_BAR_BAZ')).to.equal('FOO_BAR_BAZ');
     });
-    it('with number', () => {
+    test('with number', () => {
       expect(toCamelCase('utf8_encoding')).to.equal('utf8Encoding');
       expect(toCamelCase('utf_8_encoding')).to.equal('utf8Encoding');
       expect(toCamelCase('8days_ago')).to.equal('8daysAgo');
@@ -54,37 +44,37 @@ describe('fastcase', () => {
   });
 
   describe('toSnakeCase', () => {
-    it('edge', () => {
+    test('edge', () => {
       expect(toSnakeCase()).to.be.undefined;
       expect(toSnakeCase(null)).to.be.null;
       expect(toSnakeCase('')).to.equal('');
     });
-    it('non string', () => {
+    test('non string', () => {
       expect(toSnakeCase(123)).to.equal(123);
       expect(toSnakeCase(123.456)).to.equal(123.456);
       expect(toSnakeCase([])).to.deep.equal([]);
       expect(toSnakeCase({})).to.deep.equal({});
     });
-    it('camel case', () => {
+    test('camel case', () => {
       expect(toSnakeCase('fooBarBaz')).to.equal('foo_bar_baz');
     });
-    it('snake case', () => {
+    test('snake case', () => {
       expect(toSnakeCase('foo_bar_baz')).to.equal('foo_bar_baz');
     });
-    xit('FIXME: pascal case', () => {
+    xtest('FIXME: pascal case', () => {
       // FIXME: expect(toSnakeCase('FooBarBaz')).to.equal( 'FooBarBaz');
       expect(toSnakeCase('FooBarBaz')).to.equal('foo_bar_baz');
     });
-    it('kebab case', () => {
+    test('kebab case', () => {
       expect(toSnakeCase('foo-bar-baz')).to.equal('foo-bar-baz');
     });
-    it('cobol case', () => {
+    test('cobol case', () => {
       expect(toSnakeCase('FOO-BAR-BAZ')).to.equal('FOO-BAR-BAZ');
     });
-    it('upper case', () => {
+    test('upper case', () => {
       expect(toSnakeCase('FOO_BAR_BAZ')).to.equal('FOO_BAR_BAZ');
     });
-    it('with number', () => {
+    test('with number', () => {
       expect(toSnakeCase('utf8Encoding')).to.equal('utf8_encoding');
       expect(toSnakeCase('8daysAgo')).to.equal('8days_ago');
       expect(toSnakeCase('8DaysAgo')).to.equal('8_days_ago');
@@ -94,7 +84,7 @@ describe('fastcase', () => {
   });
 
   describe('toCamelCaseFast', () => {
-    it('should faster than toCamelCase()', () => {
+    test('should faster than toCamelCase()', () => {
       const COUNT = 1000000;
 
       const start = Date.now();
@@ -116,7 +106,7 @@ describe('fastcase', () => {
   });
 
   describe('toSnakeCaseFast', () => {
-    it('should faster than toSnakeCase()', () => {
+    test('should faster than toSnakeCase()', () => {
       const COUNT = 1000000;
 
       const start = Date.now();
@@ -139,14 +129,14 @@ describe('fastcase', () => {
 
   describe('toCaseKeysFn', () => {
     const toUpperCaseKeys = toCaseKeysFn(s => s.toUpperCase());
-    it('edge', () => {
+    test('edge', () => {
       expect(toUpperCaseKeys()).to.be.undefined;
       expect(toUpperCaseKeys(null)).to.be.null;
       expect(toUpperCaseKeys([])).to.deep.equal([]);
       expect(toUpperCaseKeys({})).to.deep.equal({});
       expect(toUpperCaseKeys(new Date())).to.deep.equal({});
     });
-    it('non object', () => {
+    test('non object', () => {
       expect(toUpperCaseKeys('')).to.equal('');
       expect(toUpperCaseKeys('fooBarBaz')).to.equal('fooBarBaz');
       expect(toUpperCaseKeys('foo_bar_baz')).to.equal('foo_bar_baz');
@@ -155,7 +145,7 @@ describe('fastcase', () => {
       expect(toUpperCaseKeys(true)).to.equal(true);
       expect(toUpperCaseKeys(false)).to.equal(false);
     });
-    it('object', () => {
+    test('object', () => {
       expect(
         toUpperCaseKeys({
           foo_bar_baz: 'foo_bar_baz',
@@ -164,7 +154,7 @@ describe('fastcase', () => {
         FOO_BAR_BAZ: 'foo_bar_baz',
       });
     });
-    it('object with dup keys', () => {
+    test('object with dup keys', () => {
       expect(
         toUpperCaseKeys({
           foo_bar_baz: 'foo_bar_baz',
@@ -174,7 +164,7 @@ describe('fastcase', () => {
         FOO_BAR_BAZ: 'fooBarBaz',
       });
     });
-    it('array', () => {
+    test('array', () => {
       expect(
         toUpperCaseKeys([
           {
@@ -186,14 +176,14 @@ describe('fastcase', () => {
   });
 
   describe('toCamelCaseKeys', () => {
-    it('edge', () => {
+    test('edge', () => {
       expect(toCamelCaseKeys()).to.be.undefined;
       expect(toCamelCaseKeys(null)).to.be.null;
       expect(toCamelCaseKeys([])).to.deep.equal([]);
       expect(toCamelCaseKeys({})).to.deep.equal({});
       expect(toCamelCaseKeys(new Date())).to.deep.equal({});
     });
-    it('non object', () => {
+    test('non object', () => {
       expect(toCamelCaseKeys('')).to.equal('');
       expect(toCamelCaseKeys('fooBarBaz')).to.equal('fooBarBaz');
       expect(toCamelCaseKeys('foo_bar_baz')).to.equal('foo_bar_baz');
@@ -202,7 +192,7 @@ describe('fastcase', () => {
       expect(toCamelCaseKeys(true)).to.equal(true);
       expect(toCamelCaseKeys(false)).to.equal(false);
     });
-    it('object', () => {
+    test('object', () => {
       expect(
         toCamelCaseKeys({
           foo_bar_baz: 'foo_bar_baz',
@@ -211,7 +201,7 @@ describe('fastcase', () => {
         fooBarBaz: 'foo_bar_baz',
       });
     });
-    it('object with dup keys', () => {
+    test('object with dup keys', () => {
       expect(
         toCamelCaseKeys({
           foo_bar_baz: 'foo_bar_baz',
@@ -221,20 +211,20 @@ describe('fastcase', () => {
         fooBarBaz: 'fooBarBaz',
       });
     });
-    it('array', () => {
+    test('array', () => {
       expect(toCamelCaseKeys([{ foo_bar_baz: 'foo_bar_baz' }])).to.deep.equal([{ fooBarBaz: 'foo_bar_baz' }]);
     });
   });
 
   describe('toSnakeCaseKeys', () => {
-    it('edge', () => {
+    test('edge', () => {
       expect(toSnakeCaseKeys()).to.be.undefined;
       expect(toSnakeCaseKeys(null)).to.be.null;
       expect(toSnakeCaseKeys([])).to.deep.equal([]);
       expect(toSnakeCaseKeys({})).to.deep.equal({});
       expect(toSnakeCaseKeys(new Date())).to.deep.equal({});
     });
-    it('non object', () => {
+    test('non object', () => {
       expect(toSnakeCaseKeys('')).to.equal('');
       expect(toSnakeCaseKeys('fooBarBaz')).to.equal('fooBarBaz');
       expect(toSnakeCaseKeys('foo_bar_baz')).to.equal('foo_bar_baz');
@@ -243,7 +233,7 @@ describe('fastcase', () => {
       expect(toSnakeCaseKeys(true)).to.equal(true);
       expect(toSnakeCaseKeys(false)).to.equal(false);
     });
-    it('object', () => {
+    test('object', () => {
       expect(
         toSnakeCaseKeys({
           fooBarBaz: 'fooBarBaz',
@@ -252,7 +242,7 @@ describe('fastcase', () => {
         foo_bar_baz: 'fooBarBaz',
       });
     });
-    it('object with dup keys', () => {
+    test('object with dup keys', () => {
       expect(
         toSnakeCaseKeys({
           fooBarBaz: 'fooBarBaz',
@@ -262,7 +252,7 @@ describe('fastcase', () => {
         foo_bar_baz: 'foo_bar_baz',
       });
     });
-    it('array', () => {
+    test('array', () => {
       expect(toSnakeCaseKeys([{ fooBarBaz: 'fooBarBaz' }])).to.deep.equal([{ foo_bar_baz: 'fooBarBaz' }]);
     });
   });
