@@ -3,13 +3,14 @@ import CaseConverter from './case-converter';
 export default class CamelCase {
   static CAMEL_CASE_REGEXP = /(.+?)([A-Z]+[a-z0-9])/g;
 
+  static create(): CamelCase {
+    return new CamelCase();
+  }
+
   /**
    * convert the given **camelCase** string to a snake_case string.
-   *
-   * @param s {string|*} camel case string
-   * @returns {string|*} snake case string
    */
-  toSnakeCase: CaseConverter = s => {
+  toSnakeCase: CaseConverter = (s: any) => {
     if (typeof s !== 'string') {
       return s;
     }

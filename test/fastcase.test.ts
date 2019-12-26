@@ -54,7 +54,7 @@ describe('fastcase', () => {
   });
 
   describe('toCaseKeysFn', () => {
-    const toUpperCaseKeys = toCaseKeysFn(s => s.toUpperCase());
+    const toUpperCaseKeys = toCaseKeysFn((s: string) => s.toUpperCase());
     test('edge', () => {
       expect(toUpperCaseKeys()).toBeUndefined();
       expect(toUpperCaseKeys(null)).toBeNull();

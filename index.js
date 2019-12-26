@@ -1,1 +1,1 @@
-module.exports = require('./lib/fastcase');
+module.exports = require('./dist');

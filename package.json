@@ -1,23 +1,27 @@
 {
   "name": "@fastcampus/fastcase",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "fast and simple snake/camel case converter",
   "author": "Dongsu Jang <iolothebard@gmail.com>",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint ./lib",
-    "test": "mocha --exit test/**.spec.js",
-    "coverage": "nyc npm test"
+    "lint": "eslint --ext .js --ext .ts ./src ./test",
+    "test": "jest --forceExit --coverage --verbose",
+    "build": "tsc",
+    "watch": "tsc -w"
   },
-  "license": "MIT",
   "devDependencies": {
-    "@types/chai": "^4.2.6",
-    "chai": "^4.2.0",
-    "eslint": "^6.7.2",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "mocha": "^6.2.2",
-    "nyc": "^14.1.1",
-    "prettier": "^1.19.1"
-  }
+    "@types/jest": "^24.0.24",
+    "@types/node": "^13.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.13.0",
+    "@typescript-eslint/parser": "^2.13.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.8.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {}
 }
