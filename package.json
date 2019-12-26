@@ -5,6 +5,7 @@
   "author": "Dongsu Jang <iolothebard@gmail.com>",
   "main": "index.js",
   "scripts": {
+    "prepare": "npm run build",
     "lint": "eslint --ext .js --ext .ts ./src ./test",
     "test": "jest --forceExit --coverage --verbose",
     "build": "tsc",
