@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.memoize = (fn, cache = {}) => {
+exports.createFastCaseConverter = (fn, cache = {}) => {
     return (s) => {
         const cached = cache[s];
         if (cached) {
@@ -11,4 +11,4 @@ exports.memoize = (fn, cache = {}) => {
         return result;
     };
 };
-//# sourceMappingURL=memoize.js.map
+//# sourceMappingURL=fast-case-converter.js.map

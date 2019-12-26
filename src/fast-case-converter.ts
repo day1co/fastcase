@@ -1,6 +1,6 @@
 import CaseConverter from './case-converter';
 
-export const memoize = (fn: CaseConverter, cache: any = {}) => {
+export const createFastCaseConverter = (fn: CaseConverter, cache: any = {}): CaseConverter => {
   return (s: string) => {
     const cached = cache[s];
     if (cached) {
