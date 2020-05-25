@@ -6,8 +6,6 @@ export const createFastCaseConverter = (fn: CaseConverter, cache: any = {}): Cas
     if (cached) {
       return cached;
     }
-    let result = fn(s);
-    cache[s] = result;
-    return result;
+    return (cache[s] = fn(s));
   };
 };

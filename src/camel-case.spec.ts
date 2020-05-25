@@ -15,29 +15,44 @@ describe('camel-case', () => {
     });
     test('camel case', () => {
       expect(toSnakeCase('fooBarBaz')).toEqual('foo_bar_baz');
+      expect(toSnakeCase('atByOf')).toEqual('at_by_of');
     });
     test('snake case', () => {
       expect(toSnakeCase('foo_bar_baz')).toEqual('foo_bar_baz');
+      expect(toSnakeCase('at_by_of')).toEqual('at_by_of');
     });
-    test.skip('FIXME: pascal case', () => {
-      // FIXME: expect(toSnakeCase('FooBarBaz')).toEqual( 'FooBarBaz');
+    test.skip('pascal case', () => {
       expect(toSnakeCase('FooBarBaz')).toEqual('foo_bar_baz');
+      expect(toSnakeCase('AtByOf')).toEqual('at_by_of');
     });
-    test('kebab case', () => {
-      expect(toSnakeCase('foo-bar-baz')).toEqual('foo-bar-baz');
+    test.skip('kebab case', () => {
+      expect(toSnakeCase('foo-bar-baz')).toEqual('foo_bar_baz');
+      expect(toSnakeCase('at-by-of')).toEqual('at_by_of');
     });
-    test('cobol case', () => {
-      expect(toSnakeCase('FOO-BAR-BAZ')).toEqual('FOO-BAR-BAZ');
+    test.skip('cobol case', () => {
+      expect(toSnakeCase('FOO-BAR-BAZ')).toEqual('foo_bar_baz');
+      expect(toSnakeCase('AT-BY-OF')).toEqual('at_by_of');
     });
-    test('upper case', () => {
-      expect(toSnakeCase('FOO_BAR_BAZ')).toEqual('FOO_BAR_BAZ');
+    test.skip('macro case', () => {
+      expect(toSnakeCase('FOO_BAR_BAZ')).toEqual('foo_bar_baz');
+      expect(toSnakeCase('AT_BY_OF')).toEqual('at_by_of');
+    });
+    test.skip('lower case', () => {
+      expect(toSnakeCase('foo bar baz')).toEqual('foo_bar_baz');
+      expect(toSnakeCase('at by of')).toEqual('at_by_of');
+    });
+    test.skip('upper case', () => {
+      expect(toSnakeCase('FOO BAR BAZ')).toEqual('foo_bar_baz');
+      expect(toSnakeCase('AT BY OF')).toEqual('at_by_of');
     });
     test('with number', () => {
       expect(toSnakeCase('utf8Encoding')).toEqual('utf8_encoding');
       expect(toSnakeCase('8daysAgo')).toEqual('8days_ago');
       expect(toSnakeCase('8DaysAgo')).toEqual('8_days_ago');
       expect(toSnakeCase('imageUrl2')).toEqual('image_url2');
-      expect(toSnakeCase('I18N')).toEqual('I18N');
+      expect(toSnakeCase('I18N')).toEqual('i18_n');
+      expect(toSnakeCase('i18N')).toEqual('i18_n');
+      expect(toSnakeCase('i18n')).toEqual('i18n');
     });
   });
 });
