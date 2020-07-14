@@ -19,10 +19,12 @@ describe('snake-case', () => {
       expect(toCamelCase('foo__bar__baz')).toEqual('fooBarBaz');
       expect(toCamelCase('at_by_of')).toEqual('atByOf');
       expect(toCamelCase('at__by__of')).toEqual('atByOf');
+      expect(toCamelCase('with_for_at')).toEqual('withForAt');
     });
     test.skip('camel case', () => {
       expect(toCamelCase('fooBarBaz')).toEqual('fooBarBaz');
       expect(toCamelCase('atByOf')).toEqual('atByOf');
+      expect(toCamelCase('withForAt')).toEqual('withForAt');
     });
     test.skip('pascal case', () => {
       expect(toCamelCase('FooBarBaz')).toEqual('fooBarBaz');
