@@ -1,5 +1,6 @@
 import { toSnakeCase } from './camel-case';
 import { toCamelCase } from './snake-case';
+import { toMacroCase } from './kebab-case';
 import { createFastCaseConverter } from './fast-case-converter';
 import { createCaseKeysConverter } from './case-keys-converter';
 
