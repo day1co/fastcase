@@ -1,13 +1,13 @@
 {
-  "name": "@fastcampus/fastcase",
-  "version": "0.1.4",
+  "name": "@day1co/fastcase",
+  "version": "0.2.0",
   "description": "fast and simple snake/camel case converter",
-  "url": "https://github.com/fastcampus/fastcase",
-  "repository": "https://github.com/fastcampus/fastcase",
-  "author": "Dongsu Jang <iolothebard@gmail.com>",
+  "url": "https://github.com/day1co/fastcase",
+  "repository": "https://github.com/day1co/fastcase",
+  "author": "Dongsu Jang <iolo@kakao.com>",
   "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.js",
   "scripts": {
     "prepublishOnly": "npm run build",
     "pretest": "npm run lint",
@@ -19,17 +19,17 @@
     "start": "tsc -w"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.2",
-    "@types/node": "^16.10.1",
-    "@typescript-eslint/eslint-plugin": "^4.31.2",
-    "@typescript-eslint/parser": "^4.31.2",
-    "eslint": "^7.32.0",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.12",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "jest": "^27.2.2",
-    "prettier": "^2.4.1",
-    "ts-jest": "^27.0.5",
-    "typescript": "^4.4.3"
+    "jest": "^27.4.5",
+    "prettier": "^2.5.1",
+    "ts-jest": "^27.1.1",
+    "typescript": "^4.5.4"
   },
   "dependencies": {}
 }
