@@ -1,6 +1,6 @@
-name: fastcase-npm-publish
+name: npm-publish
 concurrency:
-  group: fastcase-npm-publish-${{github.sha}}
+  group: npm-publish-${{github.sha}}
   cancel-in-progress: false
 
 on:
