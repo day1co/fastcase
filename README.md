@@ -3,7 +3,7 @@ fastcase
 
 fast and simple camel/snake case converter
 
-[![npm version](https://badge.fury.io/js/%40fastcampus%2Ffastcase.svg)](https://badge.fury.io/js/%40fastcampus%2Ffastcase)
+![version](https://img.shields.io/github/package-json/v/day1co/fastcase)
 
 ## Getting Started
 
