@@ -8,7 +8,7 @@ fast and simple camel/snake case converter
 ## Getting Started
 
 ```js
-const { toCameCaseFast, toSnakeCaseFast, toCamelCaseKeys, toSnakeCaseKeys } = require('@fastcampus/fastcase');
+const { toCameCaseFast, toSnakeCaseFast, toCamelCaseKeys, toSnakeCaseKeys } = require('@day1co/fastcase');
 
 console.log(toCameCaseFast('foo_bar_baz_qux'));
 // fooBarBazQux
