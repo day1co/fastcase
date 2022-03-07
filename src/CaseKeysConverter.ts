@@ -1,9 +1,9 @@
-import CaseConverter from './case-converter';
+import type { CaseConverter } from './CaseConverter';
 
 /**
  * Convert the given source object to an object with target case keys.
  */
-export default interface CaseKeysConverter {
+export interface CaseKeysConverter {
   (obj: object): object;
   (obj: Array<any>): Array<any>;
   (obj: any): any;

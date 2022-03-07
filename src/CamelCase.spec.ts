@@ -1,6 +1,6 @@
-import { toSnakeCase } from './camel-case';
+import { toSnakeCase } from './CamelCase';
 
-describe('camel-case', () => {
+describe('CamelCase', () => {
   describe('toSnakeCase', () => {
     test('edge', () => {
       expect(toSnakeCase(undefined)).toBeUndefined();

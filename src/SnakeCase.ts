@@ -1,4 +1,4 @@
-import CaseConverter from './case-converter';
+import type { CaseConverter } from './CaseConverter';
 
 // https://dev.to/rrampage/snake-case-to-camel-case-and-back-using-regular-expressions-and-python-m9j?signin=true
 const SNAKE_CASE_REGEXP = /(.*?)_+([a-zA-Z])/g;

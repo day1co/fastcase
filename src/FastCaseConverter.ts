@@ -1,4 +1,4 @@
-import CaseConverter from './case-converter';
+import type { CaseConverter } from './CaseConverter';
 
 export const createFastCaseConverter = (fn: CaseConverter, cache: any = {}): CaseConverter => {
   return (s: string) => {
