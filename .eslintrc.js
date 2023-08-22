@@ -1,14 +1,6 @@
 module.exports = {
-  env: {
-    browser: true,
-    node: true,
-    jest: true,
+  extends: '@day1co/eslint-config/common-ts',
+  rules: {
+    'no-console': 'warn',
   },
-  parserOptions: {
-    ecmaVersion: 9,
-    sourceType: 'module',
-  },
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
-  extends: ['plugin:@typescript-eslint/eslint-recommended', 'plugin:prettier/recommended'],
 };
