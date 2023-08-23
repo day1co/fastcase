@@ -20,14 +20,12 @@ describe('index', () => {
         toSnakeCase(`fooBarBazQux${i % 100}`);
       }
       const elapsed = Date.now() - start;
-      console.log(elapsed);
 
       const start2 = Date.now();
       for (let i = 0; i < COUNT; i += 1) {
         toSnakeCaseFast(`fooBarBazQux${i % 100}`);
       }
       const elapsed2 = Date.now() - start2;
-      console.log(elapsed2);
 
       expect(elapsed2).toBeLessThan(elapsed);
     });
@@ -83,14 +81,12 @@ describe('index', () => {
         toCamelCase(`foo_bar_baz_qux_${i % 100}`);
       }
       const elapsed = Date.now() - start;
-      console.log(elapsed);
 
       const start2 = Date.now();
       for (let i = 0; i < COUNT; i += 1) {
         toCamelCaseFast(`foo_bar_baz_qux_${i % 100}`);
       }
       const elapsed2 = Date.now() - start2;
-      console.log(elapsed2);
 
       expect(elapsed2).toBeLessThan(elapsed);
     });
@@ -146,14 +142,12 @@ describe('index', () => {
         toKebabCase(`foo_bar_baz_qux_${i % 100}`);
       }
       const elapsed = Date.now() - start;
-      console.log(elapsed);
 
       const start2 = Date.now();
       for (let i = 0; i < COUNT; i += 1) {
         toKebabCaseFast(`foo_bar_baz_qux_${i % 100}`);
       }
       const elapsed2 = Date.now() - start2;
-      console.log(elapsed2);
 
       expect(elapsed2).toBeLessThan(elapsed);
     });
