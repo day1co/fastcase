@@ -1,10 +1,11 @@
 import { toSnakeCase } from './camel-case';
 import { toCamelCase } from './snake-case';
+import { toKebabCase } from './kebab-case';
 import { createFastCaseConverter } from './fast-case-converter';
 import { createCaseKeysConverter } from './case-keys-converter';
 
 // re-export
-export { toSnakeCase, toCamelCase };
+export { toSnakeCase, toCamelCase, toKebabCase };
 
 /**
  * with cache,
@@ -29,3 +30,15 @@ export const toCamelCaseFast = createFastCaseConverter(toCamelCase);
  * convert object with snake_case keys to object with camelCase keys.
  */
 export const toCamelCaseKeys = createCaseKeysConverter(toCamelCaseFast);
+
+/**
+ * with cache,
+ * convert the given **any case** string to a kebab-case string,
+ */
+export const toKebabCaseFast = createFastCaseConverter(toKebabCase);
+
+/**
+ * with cache,
+ * convert object with any case keys to object with kebab-case keys.
+ */
+export const toKebabCaseKeys = createCaseKeysConverter(toKebabCaseFast);

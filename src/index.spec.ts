@@ -1,4 +1,14 @@
-import { toSnakeCase, toSnakeCaseFast, toSnakeCaseKeys, toCamelCase, toCamelCaseFast, toCamelCaseKeys } from './index';
+import {
+  toSnakeCase,
+  toSnakeCaseFast,
+  toSnakeCaseKeys,
+  toCamelCase,
+  toCamelCaseFast,
+  toCamelCaseKeys,
+  toKebabCase,
+  toKebabCaseFast,
+  toKebabCaseKeys,
+} from './index';
 
 describe('index', () => {
   describe('toSnakeCaseFast', () => {
@@ -124,6 +134,69 @@ describe('index', () => {
     });
     test('array', () => {
       expect(toCamelCaseKeys([{ foo_bar_baz: 'foo_bar_baz' }])).toEqual([{ fooBarBaz: 'foo_bar_baz' }]);
+    });
+  });
+
+  describe('toKebabCaseFast', () => {
+    test('should faster than toKebabCase()', () => {
+      const COUNT = 1000000;
+
+      const start = Date.now();
+      for (let i = 0; i < COUNT; i += 1) {
+        toKebabCase(`foo_bar_baz_qux_${i % 100}`);
+      }
+      const elapsed = Date.now() - start;
+      console.log(elapsed);
+
+      const start2 = Date.now();
+      for (let i = 0; i < COUNT; i += 1) {
+        toKebabCaseFast(`foo_bar_baz_qux_${i % 100}`);
+      }
+      const elapsed2 = Date.now() - start2;
+      console.log(elapsed2);
+
+      expect(elapsed2).toBeLessThan(elapsed);
+    });
+  });
+
+  describe('toKebabCaseKeys', () => {
+    test('edge', () => {
+      expect(toKebabCaseKeys(undefined)).toBeUndefined();
+      expect(toKebabCaseKeys(null)).toBeNull();
+      expect(toKebabCaseKeys([])).toEqual([]);
+      expect(toKebabCaseKeys({})).toEqual({});
+      expect(toKebabCaseKeys(new Date())).toEqual({});
+    });
+    test('non object', () => {
+      expect(toKebabCaseKeys('')).toEqual('');
+      expect(toKebabCaseKeys('fooBarBaz')).toEqual('fooBarBaz');
+      expect(toKebabCaseKeys('foo_bar_baz')).toEqual('foo_bar_baz');
+      expect(toKebabCaseKeys(123)).toEqual(123);
+      expect(toKebabCaseKeys(123.456)).toEqual(123.456);
+      expect(toKebabCaseKeys(true)).toEqual(true);
+      expect(toKebabCaseKeys(false)).toEqual(false);
+    });
+    test('object', () => {
+      expect(
+        toKebabCaseKeys({
+          foo_bar_baz: 'foo_bar_baz',
+        })
+      ).toEqual({
+        'foo-bar-baz': 'foo_bar_baz',
+      });
+    });
+    test('object with dup keys', () => {
+      expect(
+        toKebabCaseKeys({
+          foo_bar_baz: 'foo_bar_baz',
+          fooBarBaz: 'fooBarBaz',
+        })
+      ).toEqual({
+        'foo-bar-baz': 'fooBarBaz',
+      });
+    });
+    test('array', () => {
+      expect(toKebabCaseKeys([{ foo_bar_baz: 'foo_bar_baz' }])).toEqual([{ 'foo-bar-baz': 'foo_bar_baz' }]);
     });
   });
 });
