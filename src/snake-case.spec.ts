@@ -1,5 +1,5 @@
 import { toCamelCase } from './snake-case';
-import { toSnakeCase } from './camel-case';
+// import { toSnakeCase } from './camel-case';
 
 describe('snake-case', () => {
   describe('toCamelCase', () => {

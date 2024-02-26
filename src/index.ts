@@ -1,8 +1,8 @@
 import { toSnakeCase } from './camel-case';
-import { toCamelCase } from './snake-case';
-import { toKebabCase } from './kebab-case';
-import { createFastCaseConverter } from './fast-case-converter';
 import { createCaseKeysConverter } from './case-keys-converter';
+import { createFastCaseConverter } from './fast-case-converter';
+import { toKebabCase } from './kebab-case';
+import { toCamelCase } from './snake-case';
 
 // re-export
 export { toSnakeCase, toCamelCase, toKebabCase };
